@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: sporttrack_development
+
+test:
+  <<: *default
+  database: sporttrack_test
+
+production:
+  <<: *default
+  database: sporttrack_production
