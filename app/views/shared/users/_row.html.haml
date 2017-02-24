@@ -15,7 +15,7 @@
             %th  
         %tbody
           - users.each do |user|
-            %tr
+            %tr{class: ('active' if user == @user)}
               %td
                 %img{alt: "", src: "http://bootdey.com/img/Content/user_1.jpg"}
                 = link_to user.name, user_path(user), class: 'user-link'

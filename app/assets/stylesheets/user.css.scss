@@ -50,6 +50,11 @@ a {
     font-size: 1.125em;
     font-weight: 300;
 }
+
+.table tbody tr.active td{
+    background-color: rgba(0,199,126,0.5);
+}
+
 .table tbody tr td {
     font-size: 0.875em;
     vertical-align: middle;
