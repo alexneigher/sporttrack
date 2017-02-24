@@ -1,0 +1,9 @@
+- @teams.each do |team|
+  .row
+    .col-sm-3
+      %img.img-rounded{:src => "http://dummyimage.com/60x60/666/ffffff&text=No+Image"}/
+      %h4.review-block-name
+        = team.name
+    .col-sm-9
+      = render partial: 'shared/users/row', locals: {users: team.users}
+  %hr/

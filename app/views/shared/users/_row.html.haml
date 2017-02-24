@@ -1,27 +1,44 @@
-%tr
-  %td
-    %img{alt: "", src: "http://bootdey.com/img/Content/user_1.jpg"}
-    = link_to user.name, user_path(user), class: 'user-link'
-    %span.user-subhead 
-    Joined #{l( user.created_at, format: :short)}
-  %td= 100
-  // TODO
-  %td.text-center
-    f, b, s, t
-  %td.text-right
-    = mail_to user.email
+.main-box.clearfix
+  .main-box-body.clearfix
+    .table-responsive
+      %table.table.user-list
+        %thead
+          %tr
+            %th
+              %span User
+            %th
+              %span Total Hours
+            %th.text-center
+              %span Sports
+            %th.text-right
+              %span Email
+            %th  
+        %tbody
+          - users.each do |user|
+            %tr
+              %td
+                %img{alt: "", src: "http://bootdey.com/img/Content/user_1.jpg"}
+                = link_to user.name, user_path(user), class: 'user-link'
+                %span.user-subhead 
+                Joined #{l( user.created_at, format: :short)}
+              %td= 100
+              // TODO
+              %td.text-center
+                f, b, s, t
+              %td.text-right
+                = mail_to user.email
 
-  // TODO do i need these?
-  %td{:style => "width: 20%;"}
-    %a.table-link{:href => "#"}
-      %span.fa-stack
-        %i.fa.fa-square.fa-stack-2x
-        %i.fa.fa-search-plus.fa-stack-1x.fa-inverse
-    %a.table-link{:href => "#"}
-      %span.fa-stack
-        %i.fa.fa-square.fa-stack-2x
-        %i.fa.fa-pencil.fa-stack-1x.fa-inverse
-    %a.table-link.danger{:href => "#"}
-      %span.fa-stack
-        %i.fa.fa-square.fa-stack-2x
-        %i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+              // TODO do i need these?
+              %td{:style => "width: 20%;"}
+                %a.table-link{:href => "#"}
+                  %span.fa-stack
+                    %i.fa.fa-square.fa-stack-2x
+                    %i.fa.fa-search-plus.fa-stack-1x.fa-inverse
+                %a.table-link{:href => "#"}
+                  %span.fa-stack
+                    %i.fa.fa-square.fa-stack-2x
+                    %i.fa.fa-pencil.fa-stack-1x.fa-inverse
+                %a.table-link.danger{:href => "#"}
+                  %span.fa-stack
+                    %i.fa.fa-square.fa-stack-2x
+                    %i.fa.fa-trash-o.fa-stack-1x.fa-inverse

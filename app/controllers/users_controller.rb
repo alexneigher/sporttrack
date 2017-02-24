@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     #TODO
     #@user = User.includes(teams: :organization).find(params[:id])
-    @user = User.find(params[:id])
+    @user = User.includes(teams: :users).find(params[:id])
     authenticate_and_maybe_redirect
   end
 
