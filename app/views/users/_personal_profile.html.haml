@@ -11,11 +11,14 @@
         %i.fa.fa-tag
           = @user.height_meters
         m
-        | 
+        |
         %i.fa.fa-balance-scale
           = @user.weight_kilograms
           kg
       .btn-group
-        %button.btn.btn-primary{:type => "button"}
+        // maybe refactor into a view helper if complexity grows
+        %button.btn.btn-primary{:type => "button", class: ('disabled' if @user.private_profile?).to_s}
           %i.fa.fa-globe
-          Public Page
+          = @user.private_profile? ? 'Profile is private' : "Public Page"
+      .pull-right
+        =link_to 'edit', edit_user_path(@user), remote: true

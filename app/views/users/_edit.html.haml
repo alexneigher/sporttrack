@@ -1,0 +1,27 @@
+= form_for @user, url: user_path(@user), method: :put, remote: true do |f|
+  .form-group
+    .row
+      .col-md-6
+        %label Name
+        = f.text_field :name, class: 'form-control' 
+      .col-md-6
+        %label Email
+        = f.text_field :email, class: 'form-control'
+  .form-group
+    .row
+      .col-md-6
+        %label Height (m)
+        = f.number_field :height_meters, class: 'form-control' 
+      .col-md-6
+        %label Weight (kg)
+        = f.number_field :weight_kilograms, class: 'form-control'
+  .form-group
+    .row
+      .col-md-12
+        %label 
+          = f.check_box :private_profile
+          Public Profile Page
+  .form-group
+    .row
+      .col-md-12
+        = f.submit 'Save',  class: 'btn btn-primary btn-sm' 

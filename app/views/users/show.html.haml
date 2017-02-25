@@ -1,7 +1,11 @@
 .container
   .row
     .col-md-5
-      = render 'personal_profile'
+      #user-personal-profile
+        = render 'personal_profile'
+    .col-md-7
+      #user-edit
+  .row
     .col-sm-12
       %ul#tabs.nav.nav-tabs{"data-tabs" => "tabs"}
         %li.active

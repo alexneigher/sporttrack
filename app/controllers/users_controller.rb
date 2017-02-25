@@ -9,18 +9,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:sports, teams: :users).find(params[:id])
-    authenticate_and_maybe_redirect
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+  end
 
   private
-    def authenticate_and_maybe_redirect
-      if @user.private_profile?
-        unless @user == current_user
-          flash[:error] = 'This user is private'
-          redirect_to root_path
-        end
-      end
+    def user_params
+      params.require(:user).permit(:name, :email, :height_meters, :weight_kilograms, :private_profile)
     end
 
 end
