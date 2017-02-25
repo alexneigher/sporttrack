@@ -5,5 +5,5 @@
       %h4.review-block-name
         = team.name
     .col-sm-9
-      = render partial: 'shared/users/row', locals: {users: team.users}
+      = render partial: 'shared/users/row', locals: {users: team.users, full_render: false}
   %hr/

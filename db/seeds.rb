@@ -33,3 +33,18 @@ team_id_range = (teams.first.id..teams.last.id)
   user.teams << Team.find(rand(team_id_range))
   user.save
 end
+
+
+# generate arbitrary sports
+sport_names = ['soccer', 'football', 'baseball', 'lacrosse', 'running', 'swimming', 'rowing', 'cycling', 'chess', 'basketball']
+
+User.all.each do |u|
+  4.times do
+    Sport.create(user: u, name: sport_names.sample, participation_date: Date.current, participation_hours: Faker::Number.number(2))
+  end
+  u.update(total_participation_hours: u.sports.sum(:participation_hours))
+end
+
+
+
+

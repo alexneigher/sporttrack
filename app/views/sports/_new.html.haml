@@ -1,0 +1,20 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      Add New Sports Event
+    = form_for @sport, url: user_sports_path(@user), method: :post, remote: true do |f|
+      .modal-body
+        .row
+          .col-md-6
+            %label Sport Category
+            = f.select :name, options_for_select( Sport.all.map(&:name).uniq ),{} ,class: 'form-control'
+          .col-md-6
+            .form-group
+              %label Particiation Hours
+              = f.number_field :participation_hours, class: 'form-control'
+        .row
+          .col-md-6
+            %label Participation Date
+            = f.date_field :participation_date, value: Date.current, class: 'form-control'
+      .modal-footer
+        = f.submit 'Save', class: 'btn btn-primary' 

@@ -6,25 +6,35 @@
           %tr
             %th
               %span User
+
             %th
               %span Total Hours
-            %th.text-center
-              %span Sports
+
+            - if full_render
+              %th.text-center
+                %span Sports
+
             %th.text-right
               %span Email
+              
             %th  
         %tbody
           - users.each do |user|
             %tr{class: ('active' if user == @user)}
+
               %td
                 %img{alt: "", src: "http://bootdey.com/img/Content/user_1.jpg"}
                 = link_to user.name, user_path(user), class: 'user-link'
-                %span.user-subhead 
+                %span.user-subhead
                 Joined #{l( user.created_at, format: :short)}
-              %td= 100
-              // TODO
+
               %td.text-center
-                f, b, s, t
+                = user.total_participation_hours
+
+              - if full_render
+                %td.text-center
+                  = user.sports.map(&:name).join(', ')
+
               %td.text-right
                 = mail_to user.email
 

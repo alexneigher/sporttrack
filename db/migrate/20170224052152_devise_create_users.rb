@@ -7,7 +7,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.integer :units_preference, null: false, default: 1
       t.decimal :height_meters
       t.decimal :weight_kilograms
+      t.integer :total_participation_hours, null: false, default: 0
       t.boolean :private_profile, null: false, default: false
+      
       t.timestamps null: false
     end
 

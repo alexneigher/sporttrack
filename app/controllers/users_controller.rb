@@ -4,13 +4,11 @@ class UsersController < ApplicationController
   def index
     #TODO
     #@users = User.includes(teams: :organization).all
-    @users = User.order(:id).all
+    @users = User.includes(:sports).order(:id).all
   end
 
   def show
-    #TODO
-    #@user = User.includes(teams: :organization).find(params[:id])
-    @user = User.includes(teams: :users).find(params[:id])
+    @user = User.includes(:sports, teams: :users).find(params[:id])
     authenticate_and_maybe_redirect
   end
 

@@ -7,4 +7,6 @@ class User < ApplicationRecord
   enum units_preference: [ :metric, :imperial ]
 
   has_and_belongs_to_many :teams
+  has_many :sports
+
 end
