@@ -1,0 +1,63 @@
+.row
+  .col-md-6
+    .well.well-sm
+      .row
+        .col-sm-6.col-md-4
+          %img.img-rounded.img-responsive{:alt => "", :src => "http://bootdey.com/img/Content/user_1.jpg"}/
+        .col-sm-6.col-md-8
+          %h4= @user.name
+          %p
+            %i.fa.fa-envelope
+            = @user.email
+          %p
+            %i.fa.fa-tag
+              = @user.height_meters
+            m
+            |
+            %i.fa.fa-balance-scale
+              = @user.weight_kilograms
+              kg
+
+.row
+  = @sport_data
+
+.row
+  .col-md-12
+    #chart
+
+
+%script{src: "https://code.highcharts.com/highcharts.js"}
+:javascript
+  Highcharts.chart('chart', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Sport Participation'
+      },
+      xAxis: {
+          categories: #{@sport_data[:last_weeks_dates]},
+          crosshair: true
+      },
+      yAxis: {
+          min: 0,
+          title: {
+              text: 'Sports (hours)'
+          }
+      },
+      tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+      plotOptions: {
+          column: {
+              pointPadding: 0.2,
+              borderWidth: 0
+          }
+      },
+      series: #{@sport_data[:data].to_json}
+  });

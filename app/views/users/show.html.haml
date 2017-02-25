@@ -15,13 +15,11 @@
       .tab-content
         #sports.tab-pane.active
           %h4 All Sports Events
+          .pull-right
+            =link_to "add new sport", new_user_sport_path(@user), remote: true
           %ul.list-group
             #user-sports
               = render partial: 'shared/sports/index'
-
-          .row
-            .col-md-12
-              =link_to "add new sport", new_user_sport_path(@user), remote: true
         #teams.tab-pane
           %br
           #user-teams-container

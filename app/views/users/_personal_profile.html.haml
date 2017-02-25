@@ -17,7 +17,8 @@
           kg
       .btn-group
         // maybe refactor into a view helper if complexity grows
-        %button.btn.btn-primary{:type => "button", class: ('disabled' if @user.private_profile?).to_s}
+
+        = link_to user_profile_path(@user), class: "button btn btn-primary #{'disabled' if @user.private_profile?}" do
           %i.fa.fa-globe
           = @user.private_profile? ? 'Profile is private' : "Public Page"
       .pull-right

@@ -3,7 +3,7 @@
     .row
       .col-md-6
         %label Name
-        = f.text_field :name, class: 'form-control' 
+        = f.text_field :name, class: 'form-control'
       .col-md-6
         %label Email
         = f.text_field :email, class: 'form-control'
@@ -11,17 +11,18 @@
     .row
       .col-md-6
         %label Height (m)
-        = f.number_field :height_meters, class: 'form-control' 
+        = f.number_field :height_meters, step: "any", class: 'form-control'
       .col-md-6
         %label Weight (kg)
-        = f.number_field :weight_kilograms, class: 'form-control'
+        = f.number_field :weight_kilograms, step: "any", class: 'form-control'
   .form-group
     .row
       .col-md-12
         %label 
+          =f.hidden_field :private_profile, value: true
           = f.check_box :private_profile
-          Public Profile Page
+          Private Profile?
   .form-group
     .row
       .col-md-12
-        = f.submit 'Save',  class: 'btn btn-primary btn-sm' 
+        = f.submit 'Save',  class: 'btn btn-primary btn-sm'
