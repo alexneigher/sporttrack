@@ -4,14 +4,17 @@
       %img.img-rounded.img-responsive{:alt => "", :src => "http://bootdey.com/img/Content/user_1.jpg"}/
     .col-sm-6.col-md-8
       %h4= @user.name
-      %small
-        %cite{:title => "San Francisco, USA"}
-          San Francisco, USA
-          %i.glyphicon.glyphicon-map-marker
       %p
         %i.fa.fa-envelope
         = @user.email
-      / Split button
+      %p
+        %i.fa.fa-tag
+          = @user.height_meters
+        m
+        | 
+        %i.fa.fa-balance-scale
+          = @user.weight_kilograms
+          kg
       .btn-group
         %button.btn.btn-primary{:type => "button"}
           %i.fa.fa-globe

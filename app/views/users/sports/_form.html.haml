@@ -1,0 +1,15 @@
+.modal-body
+  .row
+    .col-md-6
+      %label Sport Category
+      = f.select :name, options_for_select( Sport.all.map(&:name).uniq, @sport.name),{} ,class: 'form-control'
+    .col-md-6
+      .form-group
+        %label Particiation Hours
+        = f.number_field :participation_hours, class: 'form-control'
+  .row
+    .col-md-6
+      %label Participation Date
+      = f.date_field :participation_date, class: 'form-control'
+.modal-footer
+  = f.submit 'Save', class: 'btn btn-primary' 

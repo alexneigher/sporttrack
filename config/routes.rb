@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :teams, controller: "users/teams"
-    resources :sports
+    resources :sports, controller: "users/sports"
   end
 
   root 'users#index'

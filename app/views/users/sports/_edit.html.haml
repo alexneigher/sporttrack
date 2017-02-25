@@ -1,0 +1,6 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      Add New Sports Event
+    = form_for @sport, url: user_sport_path(@user, @sport), method: :put, remote: true do |f|
+      = render partial: 'form', locals: {f: f}

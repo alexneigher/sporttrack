@@ -2,23 +2,25 @@
   .row
     .col-md-5
       = render 'personal_profile'
-    .col-md-7
-      %h4 Hours breakdown
-      .small
-        = "#{@user.total_participation_hours} hours total"
-      .row
-        .col-sm-8
-          .row
-            - @user.sports.each do |sport|
-              .col-sm-5
-                = sport.name.titleize
-                #{number_to_percentage(percent_of_total_hours(sport, @user.total_participation_hours), precision:1)}
-             
+    .col-sm-12
+      %ul#tabs.nav.nav-tabs{"data-tabs" => "tabs"}
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#sports"} Sports
+        %li
+          %a{"data-toggle" => "tab", :href => "#teams"} Teams
+      .tab-content
+        #sports.tab-pane.active
+          %h4 All Sports Events
+          %ul.list-group
+            #user-sports
+              = render partial: 'shared/sports/index'
+
           .row
             .col-md-12
               =link_to "add new sport", new_user_sport_path(@user), remote: true
-    .col-sm-12
-      %hr/
-      .review-block
-        = link_to 'See All Teams', user_teams_path(@user), remote: true
-        #user-teams-container
+        #teams.tab-pane
+          %br
+          #user-teams-container
+            = link_to 'See All Teams', user_teams_path(@user), remote: true, class: 'btn btn-primary'
+         
+
