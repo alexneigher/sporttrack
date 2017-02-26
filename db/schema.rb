@@ -10,25 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225045109) do
+ActiveRecord::Schema.define(version: 20170226205233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sports", force: :cascade do |t|
     t.integer  "participation_hours"
     t.integer  "user_id"
+    t.integer  "team_id"
     t.string   "name"
     t.date     "participation_date"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["team_id"], name: "index_sports_on_team_id", using: :btree
     t.index ["user_id"], name: "index_sports_on_user_id", using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organization_id"
+    t.index ["organization_id"], name: "index_teams_on_organization_id", using: :btree
   end
 
   create_table "teams_users", id: false, force: :cascade do |t|
@@ -52,5 +62,6 @@ ActiveRecord::Schema.define(version: 20170225045109) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "sports", "teams"
   add_foreign_key "sports", "users"
 end

@@ -1,5 +1,6 @@
 class Sport < ApplicationRecord
   belongs_to :user
+  belongs_to :team
   #normalized total hours cache_counter
   after_save :sync_user_hours_cache_counter
 

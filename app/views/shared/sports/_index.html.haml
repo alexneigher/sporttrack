@@ -1,8 +1,9 @@
 = "(#{@user.total_participation_hours} hours total)"
-- @user.sports.order(:participation_date).each do |sport|
+- @user.sports.each do |sport|
   %li.list-group-item
     = link_to edit_user_sport_path(@user, sport), remote: true do
       %i.fa.fa-pencil
-    = sport.participation_date 
+    = sport.participation_date
     \- #{sport.name.titleize}
-    #{number_to_percentage(percent_of_total_hours(sport, @user.total_participation_hours), precision:1)}
+    \- #{sport.team.name}
+    \- #{sport.participation_hours} #{'hours'.pluralize(sport.participation_hours)}

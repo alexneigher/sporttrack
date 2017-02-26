@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:sports, teams: :users).find(params[:id])
+    @user = User.includes(sports: :team).find(params[:id])
   end
 
   def edit

@@ -1,8 +1,8 @@
 class Users::TeamsController < ApplicationController
   
   def index
-    @user = User.includes(:teams).find(params[:user_id])
-    @teams = @user.teams.includes(:users)
+    @user = User.includes(teams: :users).find(params[:user_id])
+    @teams = @user.teams
   end
 
 end

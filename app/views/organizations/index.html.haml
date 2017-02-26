@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    %ul.list-group
+      - @organizations.each do |org|
+        %li.list-group-item
+          =link_to org.name, organization_path(org)
+    =# render partial: 'shared/users/row', locals: {users: @users, full_render: true}

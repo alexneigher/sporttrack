@@ -27,6 +27,6 @@ class Users::SportsController < ApplicationController
     end
 
     def sport_params
-      params.require(:sport).permit(:participation_hours, :participation_date, :name)
+      params.require(:sport).permit(:participation_hours, :participation_date, :name, :team_id)
     end
 end
