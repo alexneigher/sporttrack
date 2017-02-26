@@ -7,17 +7,7 @@ class SportDataService
   def perform
     {
       last_weeks_dates: last_weeks_dates,
-      data: [
-        {
-          name: 'Baseball',
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 34.5]
-        },
-        {
-          name: 'Football',
-          data: [19.9, 31.5, 13.4, 19.2, 14.0, 76.0, 3.5]
-        }
-      ],
-      sports_by_date: sports_by_date
+      data: grouped_sports_by_name,
     }
   end
 
@@ -25,13 +15,32 @@ class SportDataService
 
     def last_weeks_dates
       dates.map{ |date| date.strftime('%b %d, %Y') }.reverse
-    end 
+    end
 
    
+    #do sorting in ruby, maybe v2 will be raw sql w/ grouping
+    def grouped_sports_by_name
+      data = []
 
-    def sports_by_date
-      binding.pry
-      sports.select("created_at, name").group("created_at, name")
+      #group all sports by nane for enumeration
+      sports.group_by(&:name).each do |name, sports|
+        hour_data = []
+
+        #group all named sports by day, and add that sports hours
+        dates.reverse_each do |d|
+          hour_data << sports
+                        .select{ |sport| sport.participation_date == d}
+                        .sum(&:participation_hours)
+        end
+
+        #format hash for js API consumption
+        data << {
+          name: name,
+          data: hour_data
+        }
+      end
+
+      data
     end
 
 
@@ -40,7 +49,7 @@ class SportDataService
     end
 
     def sports
-      @sports ||= @user.sports.where('participation_date > ?', 7.days.ago)
+      @sports ||= @user.sports.order(:created_at).where('participation_date > ?', 7.days.ago)
     end
 
 end
