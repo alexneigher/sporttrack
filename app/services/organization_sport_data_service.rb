@@ -13,7 +13,6 @@ class OrganizationSportDataService
 
   private
 
-    #format array of hashes for js API consumption
     def participation_data
       data = {}
       sport_categories.map do |category|
@@ -25,6 +24,7 @@ class OrganizationSportDataService
     def categorized_participation_data(category)
       grouped_sports = sports.where(name: category).group_by(&:team)
       grouped_sports.map do |team, sports|
+        #format here name/y are important for highcharts js API
         {
           name: team.name,
           y: sports.sum(&:participation_hours)

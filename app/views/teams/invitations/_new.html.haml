@@ -1,0 +1,17 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      Invite someone to the #{@team.name}!
+    = form_for @invitation, url: team_invitations_path(@team), method: :post, remote: true do |f|
+      .modal-body
+        .form-group
+          .col-md-6
+            %label Email
+            = f.text_field :email, class: 'form-control'
+          .col-md-6
+            %label Name
+            = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.submit 'Send', class: 'btn btn-primary'
+
+    

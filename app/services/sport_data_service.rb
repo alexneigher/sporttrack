@@ -17,7 +17,6 @@ class SportDataService
       dates.map{ |date| date.strftime('%b %d, %Y') }.reverse
     end
 
-   
     #do sorting in ruby, maybe v2 will be raw sql w/ grouping
     def grouped_sports_by_name
       data = []

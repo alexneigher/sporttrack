@@ -58,6 +58,9 @@ group :development, :test do
   #rspec for unit testing
   gem 'rspec-rails', '~> 3.0'
 
+  # Local Email
+  gem "letter_opener"
+
 end
 
 group :development do
