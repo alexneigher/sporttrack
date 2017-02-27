@@ -20,7 +20,7 @@ class Teams::InvitationsController < ApplicationController
   end
 
   def redeem
-    @invitation = Invitation.find_and_authenticate(params[:authentication_token])
+    @invitation = Invitation.find_for_redemption(params[:authentication_token])
     if !@invitation
       flash[:error] = 'Whoops this link has expired'
       redirect_to root_path

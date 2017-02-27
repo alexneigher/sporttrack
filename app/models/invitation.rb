@@ -3,7 +3,7 @@ class Invitation < ApplicationRecord
   belongs_to :user
 
 
-  def self.find_and_authenticate(token)
+  def self.find_for_redemption(token)
     @invitation = self.where(authentication_token: token, authentication_token_redeemed_at: nil).last
   end
 
