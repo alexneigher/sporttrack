@@ -11,10 +11,10 @@
               %span Total Hours
 
             - if full_render
-              %th.text-center
+              %th
                 %span Sports
 
-            %th.text-right
+            %th
               %span Email
 
         %tbody
@@ -32,7 +32,8 @@
 
               - if full_render
                 %td.text-center
-                  = user.sports.map(&:name).join(', ')
+                  - user.sports.each do |sport|
+                    = sport_icon(sport.name)
 
-              %td.text-right
+              %td
                 = mail_to user.email

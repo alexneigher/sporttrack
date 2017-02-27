@@ -4,6 +4,7 @@
     = link_to edit_user_sport_path(@user, sport), remote: true do
       %i.fa.fa-pencil
     = sport.participation_date
-    \- #{sport.name.titleize}
+    = sport_icon(sport.name)
+    #{sport.name.titleize}
     \- #{sport.team.name}
     \- #{sport.participation_hours} #{'hours'.pluralize(sport.participation_hours)}
