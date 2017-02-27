@@ -37,10 +37,6 @@ class OrganizationSportDataService
       sports.map(&:name).uniq
     end
 
-    def teams
-      @teams ||= @org.teams.order(:name)
-    end
-
     def sports
       @sports ||= @org.sports.includes(:team)
     end
