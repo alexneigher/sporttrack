@@ -9,6 +9,8 @@ class InvitationMailer < ApplicationMailer
     @team = team
     @invitation = invitation
     @email = invitation.email
+
+    # just for local dev purposes (NOOP on heroku for now)
     @url  = "http://localhost:3000/invitations/#{invitation.authentication_token}"
     mail(to: @email, subject: "You've been invited to the #{team.name}")
   end
