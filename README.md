@@ -1,6 +1,7 @@
 # README
 
-Make sure to populate the application via `seeds.rb`
+Make sure to populate the application with sufficient sample data
+via `seeds.rb`
 
 
 Run
