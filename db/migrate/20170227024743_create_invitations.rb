@@ -6,7 +6,7 @@ class CreateInvitations < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :name
       t.string :authentication_token
-      t.date :authentication_token_redeemed_at
+      t.datetime :authentication_token_redeemed_at
       t.timestamps
     end
   end

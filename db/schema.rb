@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170227024743) do
     t.string   "email"
     t.string   "name"
     t.string   "authentication_token"
-    t.date     "authentication_token_redeemed_at"
+    t.datetime "authentication_token_redeemed_at"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["team_id"], name: "index_invitations_on_team_id", using: :btree

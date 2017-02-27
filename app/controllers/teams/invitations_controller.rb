@@ -8,10 +8,13 @@ class Teams::InvitationsController < ApplicationController
   def create
     #random "enough", maybe check db for uniqueness in V2
     token = SecureRandom.uuid
-    @invitation = @team.invitations.build(invitation_params.merge(authentication_token: token))
+    @invitation = @team
+                    .invitations
+                    .build(invitation_params.merge(authentication_token: token))
+
     @invitation.associate_team_and_build_user(@team)
-    
-    @invitation.save #propagates down to user as well
+
+    @invitation.save #propagates down to user
 
     InvitationMailer.invitation_email(@team, @invitation).deliver
   end
