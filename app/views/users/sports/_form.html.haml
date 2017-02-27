@@ -2,7 +2,7 @@
   .row
     .col-md-6
       %label Sport Category
-      = f.select :name, options_for_select( Sport.all.map(&:name).uniq, @sport.name), {}, class: 'form-control'
+      = f.select :name, options_for_select( Sport::CATEGORIES, @sport.name), {}, class: 'form-control'
     .col-md-6
       .form-group
         %label Particiation Hours
@@ -13,6 +13,6 @@
       = f.date_field :participation_date, class: 'form-control'
     .col-md-6
       %label Team
-      = f.select :team_id, options_for_select( @sport.user.teams.map{ |t| [t.name, t.id]}.uniq, @sport.team_id), {}, class: 'form-control'
+      = f.select :team_id, options_for_select( @user.teams.map{ |t| [t.name, t.id]}.uniq, @sport&.team_id), {}, class: 'form-control'
 .modal-footer
   = f.submit 'Save', class: 'btn btn-primary'
