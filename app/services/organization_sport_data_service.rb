@@ -1,7 +1,7 @@
 class OrganizationSportDataService
 
   def initialize(org)
-    @org = org #includes team/users via controller
+    @org = org
   end
 
   def perform

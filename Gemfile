@@ -41,9 +41,6 @@ gem "font-awesome-rails"
 # HAML for clean views
 gem 'haml'
 
-# Devise for basic auth
-gem 'devise'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

@@ -45,7 +45,7 @@ class SportDataService
 
 
     def dates
-      @dates ||= Date.today.downto(Date.today - 7.days)
+      @dates ||= Date.current.downto(Date.current - 7.days)
     end
 
     def sports
