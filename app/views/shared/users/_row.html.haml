@@ -32,8 +32,8 @@
 
               - if full_render
                 %td.text-center
-                  - user.sports.each do |sport|
-                    = sport_icon(sport.name)
+                  - user.sports.pluck(:name).uniq.each do |sport_name|
+                    = sport_icon(sport_name)
 
               %td
                 = mail_to user.email
