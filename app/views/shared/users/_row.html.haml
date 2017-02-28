@@ -22,7 +22,7 @@
             %tr{class: ('active' if user == @user)}
 
               %td
-                %img{alt: "", src: "http://bootdey.com/img/Content/user_1.jpg"}
+                %img{alt: "", src: "https://maxcdn.icons8.com/Share/icon/Users//user1600.png", style: 'max-width:50px'}
                 = link_to user.name, user_path(user), class: 'user-link'
                 %span.user-subhead
                 Joined #{l( user.created_at, format: :short)}
